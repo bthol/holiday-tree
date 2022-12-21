@@ -1,3 +1,39 @@
 body {
-    background: red;
+    background: #111137;
+}
+
+.tree-container {
+    width: 100vmin;
+    height: 60vmin;
+    margin: 3vmin;
+    background: #e9381f;
+    border: 1.5vmin solid green;
+}
+
+.flex-layout {
+    display: flex;
+    justify-content: center;
+}
+
+#btn-mode:hover, #btn-spd-up:hover, #btn-spd-down:hover {
+    cursor: pointer;
+    stroke: gray;
+}
+
+#msg-feedback {
+    position: absolute;
+    opacity: 0%;
+}
+
+.fade-out {
+    animation: fadeOut 1s ease-in;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 100%;
+    }
+    to {
+        opacity: 0%;
+    }
 }
