@@ -4,9 +4,26 @@ for (let i = 1; i < 13; i++) {
 }
 let mode = 1;
 let rate = 500;
+let bool = true;
 let pattern = setInterval(() => {
-  for (let i = 0; i < lights.length; i++) {
-    lights[i].style.fill = lights[i].style.fill == "white" ? "yellow" : "white";
+  if (bool) {
+    for (let i = 0; i < lights.length; i += 2) {
+      lights[i].style.fill = "white";
+    }
+    setTimeout(() => {
+      for (let i = 0; i < lights.length; i += 2) {
+      lights[i].style.fill = "#fa0000";
+    }}, rate);
+    bool = false;
+  } else {
+    for (let i = 1; i < lights.length; i += 2) {
+      lights[i].style.fill = "white";
+    }
+    setTimeout(() => {
+      for (let i = 1; i < lights.length; i += 2) {
+      lights[i].style.fill = "#fa0000";
+    }}, rate);
+    bool = true;
   }
 }, rate);
 
@@ -84,17 +101,6 @@ function updateMode() {
     // Clear Cache
     clearInterval(pattern);
     
-    // alternate two colors
-    pattern = setInterval(() => {
-      for (let i = 0; i < lights.length; i++) {
-        lights[i].style.fill = lights[i].style.fill == "white" ? "yellow" : "white";
-      }
-    }, rate);
-    
-  } else if (mode == 2) {
-    // Clear Cache
-    clearInterval(pattern);
-    
     // alternate evens and odds
     let bool = true;
     pattern = setInterval(() => {
@@ -104,40 +110,68 @@ function updateMode() {
         }
         setTimeout(() => {
           for (let i = 0; i < lights.length; i += 2) {
-          lights[i].style.fill = "yellow";
-        }}, rate);
-        bool = false;
-      } else {
-        for (let i = 1; i < lights.length; i += 2) {
-          lights[i].style.fill = "white";
-        }
-        setTimeout(() => {
+            lights[i].style.fill = "#fa0000";
+          }}, rate);
+          bool = false;
+        } else {
           for (let i = 1; i < lights.length; i += 2) {
-          lights[i].style.fill = "yellow";
-        }}, rate);
-        bool = true;
-      }
-    }, rate)
-    
-  } else if (mode == 3) {
-    // Clear Cache
+            lights[i].style.fill = "white";
+          }
+          setTimeout(() => {
+            for (let i = 1; i < lights.length; i += 2) {
+              lights[i].style.fill = "#fa0000";
+            }}, rate);
+            bool = true;
+          }
+        }, rate);
+        
+      } else if (mode == 2) {
+        // Clear Cache
+        clearInterval(pattern);
+        
+        // alternate rows
+        pattern = setInterval(() => {
+          setTimeout(() => {
+            lights[0].style.fill = lights[0].style.fill == "white" ? "#fa0000" : "white";
+            lights[1].style.fill = lights[1].style.fill == "white" ? "#fa0000" : "white";
+            lights[2].style.fill = lights[2].style.fill == "white" ? "#fa0000" : "white";
+          }, 0)
+          setTimeout(() => {
+            lights[3].style.fill = lights[3].style.fill == "white" ? "#fa0000" : "white";
+            lights[4].style.fill = lights[4].style.fill == "white" ? "#fa0000" : "white";
+            lights[5].style.fill = lights[5].style.fill == "white" ? "#fa0000" : "white";
+          }, rate / 4)
+          setTimeout(() => {
+            lights[6].style.fill = lights[6].style.fill == "white" ? "#fa0000" : "white";
+            lights[7].style.fill = lights[7].style.fill == "white" ? "#fa0000" : "white";
+            lights[8].style.fill = lights[8].style.fill == "white" ? "#fa0000" : "white";
+          }, 2 * (rate / 4))
+          setTimeout(() => {
+              lights[9].style.fill = lights[9].style.fill == "white" ? "#fa0000" : "white";
+              lights[10].style.fill = lights[10].style.fill == "white" ? "#fa0000" : "white";
+              lights[11].style.fill = lights[11].style.fill == "white" ? "#fa0000" : "white";
+          }, 3 * (rate / 4))
+        }, rate)
+        
+      } else if (mode == 3) {
+        // Clear Cache
     clearInterval(pattern);
     
     // alternate columns
     pattern = setInterval(() => {
       setTimeout(() => {
         for (let i = 0; i < lights.length; i += 3) {
-          lights[i].style.fill = lights[i].style.fill == "white" ? "yellow" : "white";
+          lights[i].style.fill = lights[i].style.fill == "white" ? "#fa0000" : "white";
         }
       }, 0);
       setTimeout(() => {
         for (let i = 1; i < lights.length; i += 3) {
-          lights[i].style.fill = lights[i].style.fill == "white" ? "yellow" : "white";
+          lights[i].style.fill = lights[i].style.fill == "white" ? "#fa0000" : "white";
         }
       }, rate / 3);
       setTimeout(() => {
         for (let i = 2; i < lights.length; i += 3) {
-          lights[i].style.fill = lights[i].style.fill == "white" ? "yellow" : "white";
+          lights[i].style.fill = lights[i].style.fill == "white" ? "#fa0000" : "white";
         }
       }, 2 * (rate / 3))
     }, rate)
@@ -146,28 +180,11 @@ function updateMode() {
     // Clear Cache
     clearInterval(pattern);
     
-    // alternate rows
+    // Flashing
     pattern = setInterval(() => {
-      setTimeout(() => {
-          lights[0].style.fill = lights[0].style.fill == "white" ? "yellow" : "white";
-          lights[1].style.fill = lights[1].style.fill == "white" ? "yellow" : "white";
-          lights[2].style.fill = lights[2].style.fill == "white" ? "yellow" : "white";
-      }, 0)
-      setTimeout(() => {
-          lights[3].style.fill = lights[3].style.fill == "white" ? "yellow" : "white";
-          lights[4].style.fill = lights[4].style.fill == "white" ? "yellow" : "white";
-          lights[5].style.fill = lights[5].style.fill == "white" ? "yellow" : "white";
-      }, rate / 4)
-      setTimeout(() => {
-          lights[6].style.fill = lights[6].style.fill == "white" ? "yellow" : "white";
-          lights[7].style.fill = lights[7].style.fill == "white" ? "yellow" : "white";
-          lights[8].style.fill = lights[8].style.fill == "white" ? "yellow" : "white";
-      }, 2 * (rate / 4))
-      setTimeout(() => {
-          lights[9].style.fill = lights[9].style.fill == "white" ? "yellow" : "white";
-          lights[10].style.fill = lights[10].style.fill == "white" ? "yellow" : "white";
-          lights[11].style.fill = lights[11].style.fill == "white" ? "yellow" : "white";
-      }, 3 * (rate / 4))
-    }, rate)
+      for (let i = 0; i < lights.length; i++) {
+        lights[i].style.fill = lights[i].style.fill == "white" ? "#fa0000" : "white";
+      }
+    }, rate);
   }
 }

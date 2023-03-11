@@ -13,13 +13,10 @@ body {
     justify-content: center;
 }
 
-#btn-mode:hover, #btn-spd-up:hover, #btn-spd-down:hover {
-    cursor: pointer;
-    stroke: gray;
-}
 
 #msg-feedback {
     position: absolute;
+    top: 50vh;
     opacity: 0%;
 }
 
@@ -33,5 +30,12 @@ body {
     }
     to {
         opacity: 0%;
+    }
+}
+
+@media(hover: hover) and (pointer: fine) {
+    #btn-mode:hover, #btn-spd-up:hover, #btn-spd-down:hover {
+        cursor: pointer;
+        stroke: gray;
     }
 }
