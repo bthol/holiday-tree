@@ -4,7 +4,11 @@ for (let i = 1; i < 13; i++) {
 }
 let mode = 1;
 let rate = 500;
+let delay = 60;
 let bool = true;
+let fade =  setTimeout(() => {
+  msgFeed.classList.remove("fade-out")
+}, 1000);
 let pattern = setInterval(() => {
   if (bool) {
     for (let i = 0; i < lights.length; i += 2) {
@@ -34,12 +38,11 @@ function btnModeFunct() {
   // Change + Update Mode
   changeMode();
   updateMode();
-  // Display Text + Fade
+  msgFeed.classList.remove("fade-out");
   msgFeed.innerText = "Mode Switched";
-  msgFeed.classList.add("fade-out");
-  setTimeout(() => {
-    msgFeed.classList.remove("fade-out")
-  }, 1000)
+  fade = setTimeout(() => {
+    msgFeed.classList.add("fade-out");
+  }, delay)
 };
 
 document.body.querySelector(`#btn-spd-up`).addEventListener("click", btnspdUp);
@@ -47,10 +50,10 @@ function btnspdUp() {
   // Maximum Speed Alert
   if (rate == 100) {
     msgFeed.innerText = "Maximum Speed";
-    msgFeed.classList.add("fade-out");
-    setTimeout(() => {
-      msgFeed.classList.remove("fade-out")
-    }, 1000)
+    msgFeed.classList.remove("fade-out")
+    fade = setTimeout(() => {
+      msgFeed.classList.add("fade-out");
+    }, delay)
   } else {
     // Change rate
     rate -= 100;
@@ -58,10 +61,10 @@ function btnspdUp() {
     updateMode();
     // Display Text + Fade
     msgFeed.innerText = "Speed Increased";
-    msgFeed.classList.add("fade-out");
-    setTimeout(() => {
-      msgFeed.classList.remove("fade-out")
-    }, 1000)
+    msgFeed.classList.remove("fade-out")
+    fade = setTimeout(() => {
+      msgFeed.classList.add("fade-out");
+    }, delay)
   }
 }
 
@@ -70,10 +73,10 @@ function btnspdDown() {
   // Minimum Speed Alert
   if (rate == 1000) {
     msgFeed.innerText = "Minimum Speed";
-    msgFeed.classList.add("fade-out");
-    setTimeout(() => {
-      msgFeed.classList.remove("fade-out")
-    }, 1000)
+    msgFeed.classList.remove("fade-out")
+    fade = setTimeout(() => {
+      msgFeed.classList.add("fade-out");
+    }, delay)
   } else {
     // Change rate
     rate += 100;
@@ -81,10 +84,10 @@ function btnspdDown() {
     updateMode();
     // Display Text + Fade
     msgFeed.innerText = "Speed Decreased";
-    msgFeed.classList.add("fade-out");
-    setTimeout(() => {
-      msgFeed.classList.remove("fade-out")
-    }, 1000)
+    msgFeed.classList.remove("fade-out")
+    fade = setTimeout(() => {
+      msgFeed.classList.add("fade-out");
+    }, delay)
   }
 }
 
