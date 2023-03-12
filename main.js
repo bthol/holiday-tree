@@ -4,7 +4,7 @@ for (let i = 1; i < 13; i++) {
 }
 let mode = 1;
 let rate = 500;
-let delay = 60;
+let delay = 10;
 let bool = true;
 let fade =  setTimeout(() => {
   msgFeed.classList.remove("fade-out")

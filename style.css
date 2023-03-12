@@ -3,7 +3,7 @@ body {
 }
 
 .layout-wrap {
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -23,7 +23,7 @@ body {
 
 #msg-feedback {
     position: absolute;
-    top: 52%;
+    top: 53vh;
     opacity: 0%;
 }
 
